@@ -103,10 +103,19 @@ function MemberManagement() {
   const [newMember, setNewMember] = useState({ name: '', gender: '男', birthDate: '' });
 
   useEffect(() => {
+<<<<<<< HEAD
     fetch('http://localhost:5000/api/members')
       .then(response => response.json())
       .then(data => setMembers(data))
       .catch(error => console.error('Error fetching members:', error));
+=======
+    // 这里应该从API获取成员数据
+    const mockMembers = [
+      { id: 1, name: '张三', gender: '男', birthDate: '1990-01-01' },
+      { id: 2, name: '李四', gender: '女', birthDate: '1992-05-15' }
+    ];
+    setMembers(mockMembers);
+>>>>>>> e973db8ebf906852c018a216fed4e5e815a5615a
   }, []);
 
   const handleInputChange = (e) => {
@@ -116,6 +125,7 @@ function MemberManagement() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     fetch('http://localhost:5000/api/members', {
       method: 'POST',
       headers: {
@@ -133,6 +143,12 @@ function MemberManagement() {
       setNewMember({ name: '', gender: '男', birthDate: '' });
     })
     .catch(error => console.error('Error adding member:', error));
+=======
+    // 这里应该调用API添加新成员
+    const newId = members.length > 0 ? Math.max(...members.map(m => m.id)) + 1 : 1;
+    setMembers([...members, { ...newMember, id: newId }]);
+    setNewMember({ name: '', gender: '男', birthDate: '' });
+>>>>>>> e973db8ebf906852c018a216fed4e5e815a5615a
   };
 
   return (
